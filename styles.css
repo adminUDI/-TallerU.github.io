@@ -113,7 +113,7 @@ a {
   inset: 0;
   background:
     linear-gradient(90deg, rgba(31, 58, 95, 0.96), rgba(52, 52, 52, 0.78) 52%, rgba(209, 213, 217, 0.16)),
-    url("assets/LMZF.jpeg") center right / cover;
+    url("assets/AI.png") center right / cover;
   transform: scale(1.02);
 }
 
