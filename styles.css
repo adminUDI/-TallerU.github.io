@@ -107,7 +107,7 @@ a {
   color: var(--white);
   background: var(--charcoal);
 }
-
+**Escritorio
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -568,11 +568,11 @@ h3 {
     min-height: 86vh;
     padding: 110px 18px 36px;
   }
-
+**Telefono
   .hero-bg {
     background:
       linear-gradient(180deg, rgba(31, 58, 95, 0.9), rgba(52, 52, 52, 0.84)),
-      url("assets/LMZF.jpeg") center / cover;
+      url("assets/AI.png") center / cover;
   }
 
   .hero-actions,
