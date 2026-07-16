@@ -113,7 +113,7 @@ a {
   inset: 0;
   background:
     linear-gradient(90deg, rgba(31, 58, 95, 0.96), rgba(52, 52, 52, 0.78) 52%, rgba(209, 213, 217, 0.16)),
-    url("assets/AI.png") center right / cover;
+    url("AI.png") center right / cover;
   transform: scale(1.02);
 }
 
@@ -572,7 +572,7 @@ h3 {
   .hero-bg {
     background:
       linear-gradient(180deg, rgba(31, 58, 95, 0.9), rgba(52, 52, 52, 0.84)),
-      url("assets/AI.png") center / cover;
+      url("AI.png") center / cover;
   }
 
   .hero-actions,
