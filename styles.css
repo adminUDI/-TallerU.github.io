@@ -436,6 +436,22 @@ h3 {
   background: var(--soft);
 }
 
+.date-extension {
+  display: grid;
+  gap: 8px;
+  margin: 22px 0;
+  padding: 18px 20px;
+  border-left: 6px solid var(--navy);
+  border-radius: 8px;
+  background: var(--soft);
+  color: var(--navy);
+}
+
+.date-extension strong,
+.date-extension span {
+  display: block;
+}
+
 .people-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
