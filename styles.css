@@ -440,6 +440,10 @@ h3 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.organizers-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .committee-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
