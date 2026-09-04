@@ -47,13 +47,24 @@ a {
   backdrop-filter: blur(18px);
 }
 
+.brand-area {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
   font-weight: 900;
   text-decoration: none;
   letter-spacing: 0;
+}
+
+.brand-title {
+  white-space: nowrap;
+  font-weight: 900;
 }
 
 .brand img {
@@ -576,7 +587,7 @@ h3 {
     padding: 13px 16px;
   }
 
-  .brand span:last-child {
+  .brand-title {
     display: none;
   }
 
@@ -790,12 +801,6 @@ body.modal-open {
 }
 
 @media (max-width: 980px) {
-  .language-toggle {
-    order: 2;
-    margin-left: auto;
-    margin-right: 8px;
-  }
-
   .nav-toggle {
     order: 3;
   }
