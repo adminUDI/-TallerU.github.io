@@ -13,10 +13,19 @@
 <body>
   <header class="site-header" data-header>
     <div class="brand-area">
+      <div class="language-menu" data-language-menu>
+        <button class="language-menu-toggle" type="button" data-language-menu-toggle aria-expanded="false" aria-controls="language-options">
+          <span data-i18n="language_toggle">Idiomas</span>
+          <span class="language-menu-caret" aria-hidden="true"></span>
+        </button>
+        <div class="language-menu-options" id="language-options" role="menu" aria-label="Idiomas" hidden>
+          <button type="button" role="menuitem" data-language-option="es" data-i18n="language_spanish">Español</button>
+          <button type="button" role="menuitem" data-language-option="en" data-i18n="language_english">Inglés</button>
+        </div>
+      </div>
       <a class="brand" href="#inicio" aria-label="Ir al inicio">
         <img src="assets/logo-big.svg" alt="Logo de la organización">
       </a>
-      <button class="language-toggle" type="button" data-language-toggle aria-label="Cambiar idioma">English</button>
       <span class="brand-title" data-i18n="hero_event">MexIHC 2026</span>
     </div>
     <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" data-nav-toggle>

@@ -1,6 +1,9 @@
 const toggle = document.querySelector("[data-nav-toggle]");
 const nav = document.querySelector("[data-nav]");
-const languageToggle = document.querySelector("[data-language-toggle]");
+const languageMenu = document.querySelector("[data-language-menu]");
+const languageMenuToggle = document.querySelector("[data-language-menu-toggle]");
+const languageMenuOptions = document.querySelector("#language-options");
+const languageOptions = document.querySelectorAll("[data-language-option]");
 
 if (toggle && nav) {
   toggle.addEventListener("click", () => {
@@ -20,6 +23,9 @@ const translations = {
   es: {
     page_title: "Envejecimiento en casa | MexIHC 2026",
     meta_description: "Taller MexIHC 2026 sobre diseño, implementación y evaluación de tecnologías para apoyar el envejecimiento saludable en casa.",
+    language_toggle: "Idiomas",
+    language_spanish: "Español",
+    language_english: "Inglés",
     nav_about: "Acerca",
     nav_topics: "Tópicos",
     nav_program: "Agenda",
@@ -133,6 +139,9 @@ const translations = {
   en: {
     page_title: "MexIHC 2026 | Aging in Place",
     meta_description: "An interdisciplinary forum to discuss human-centered technologies that promote autonomy, well-being, and quality of life for older adults at home.",
+    language_toggle: "Languages",
+    language_spanish: "Spanish",
+    language_english: "English",
     nav_about: "About",
     nav_topics: "Topics",
     nav_program: "Agenda",
@@ -260,13 +269,17 @@ function setLanguage(lang) {
     }
   });
 
-  if (languageToggle) {
-    languageToggle.textContent = lang === "es" ? "English" : "Español";
-    languageToggle.setAttribute(
-      "aria-label",
-      lang === "es" ? "Switch to English" : "Cambiar a español"
-    );
-  }
+  languageMenuToggle?.setAttribute(
+    "aria-label",
+    lang === "es" ? "Seleccionar idioma" : "Select language"
+  );
+  languageMenuOptions?.setAttribute(
+    "aria-label",
+    lang === "es" ? "Idiomas" : "Languages"
+  );
+  languageOptions.forEach((option) => {
+    option.setAttribute("aria-current", String(option.dataset.languageOption === lang));
+  });
 
   document.querySelector("[data-header] .brand")?.setAttribute(
     "aria-label",
@@ -287,17 +300,40 @@ function setLanguage(lang) {
   const description = document.querySelector('meta[name="description"]');
   if (description) description.setAttribute("content", dict.meta_description);
 
-  if (languageToggle) {
-    languageToggle.dataset.lang = lang;
-  }
-
   localStorage.setItem("mexihc-language", lang);
 }
 
-if (languageToggle) {
-  languageToggle.addEventListener("click", () => {
-    const current = document.documentElement.lang === "en" ? "en" : "es";
-    setLanguage(current === "es" ? "en" : "es");
+function closeLanguageMenu() {
+  if (!languageMenu || !languageMenuToggle || !languageMenuOptions) return;
+  languageMenu.classList.remove("is-open");
+  languageMenuToggle.setAttribute("aria-expanded", "false");
+  languageMenuOptions.hidden = true;
+}
+
+if (languageMenu && languageMenuToggle && languageMenuOptions) {
+  languageMenuToggle.addEventListener("click", () => {
+    const isOpen = languageMenu.classList.toggle("is-open");
+    languageMenuToggle.setAttribute("aria-expanded", String(isOpen));
+    languageMenuOptions.hidden = !isOpen;
+  });
+
+  languageOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      setLanguage(option.dataset.languageOption);
+      closeLanguageMenu();
+      languageMenuToggle.focus();
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!languageMenu.contains(event.target)) closeLanguageMenu();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeLanguageMenu();
+      languageMenuToggle.focus();
+    }
   });
 }
 
